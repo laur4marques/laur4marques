@@ -1,0 +1,41 @@
+import tkinter as tk
+from tkinter import simpledialog 
+from tkinter import messagebox
+
+root = tk.Tk()
+#pra não ficar com a 2ª janela
+root.withdraw()
+
+nome = simpledialog.askstring("Bem-Vindo! - Calculadora IMC", "Informe seu nome:").capitalize()
+sex = simpledialog.askstring("Calculadora IMC", "Informe seu sexo [M/F]:").upper()
+peso = simpledialog.askfloat("Calculadora IMC", "Informe seu peso (Kg):")
+alt = simpledialog.askfloat("Calculadora IMC", "Informe sua altura (M):")
+
+
+imc = peso / alt**2
+IMC = round(imc,2)
+
+if IMC < 18.5:
+   cat = "Abaixo do peso."
+elif 18.5 <= IMC < 24.9:  
+   cat = "Peso normal."
+elif 25 <= IMC < 29.9:
+   cat = "Sobrepeso."
+elif 30 <= IMC < 34.9:
+   cat = "Obesidade grau I."    
+elif 35 <= IMC < 39.9:
+   cat = "Obesidade grau II."
+elif 39.9 <= IMC < 40:
+   cat = "Obesidade grau III."
+else:
+   cat = "Tente novamente"   
+
+if sex == 'M':
+   sexo = "Masculino"
+elif sex == 'F':
+   sexo = "Feminino" 
+else:
+   sexo = "Tente novamente."     
+
+
+fin = messagebox.showinfo("Calculadora IMC - Resultado", f"Bem-Vindo(a), {nome}! \nSeu sexo: {sexo} \nSeu peso: {peso} Kg \nSua altura: {alt} m \nSeu IMC: {IMC} \nSua categoria: {cat}")
